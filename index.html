@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+	<title>Virtual Race</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="src/css/styles.less" />
+</head>
+
+<body>
+	<div class="track">
+		<span class="start-line"></span>
+		<div class="racers"></div>
+		<div class="racers"></div>
+		<div class="racers"></div>
+		<span class="finish-line"></span>
+	</div>
+
+	<div class="controls-results">
+		<div class="controls">
+			<button class="start-btn">Start</button>
+		</div>
+
+		<div class="results-odds">
+			<div class="results">
+				<h5 class="resuts-title">Race Results</h5>
+				<div class="race-results">
+					<span style="text-align:center; font-size:20px;">Please Enter new players, Place your bets and Select the "Start"
+						button to begin the Race</span>
+				</div>
+			</div>
+			<div class="odds">
+				<h5 class="odds-title">Odds Results/Stats </h5>
+				<div class="racers-odds-stats">
+					<div class="racer-odds" id="racers-odds">
+						<h6>Odds</h6>
+					</div>
+					<div class="racer-stats" id="racer-stats">
+						<h6>Racer Stats</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="betting-players">
+		<h2 class="betting-players_title">Add Betting players</h2>
+		<div class="control-betters">
+			<button class="adjust-betters-btn" id="add-better">Add</button>
+			<button class="adjust-betters-btn" id="remove-better">Remove</button>
+			<input type="text" class="better-name-input" name="better-name-input" id="new-better-name" placeholder="Enter new better" />
+			<span class="error"> </span>
+		</div>
+		<div class="betting-players-list">
+
+			<!-- <div class="player">
+				<span class="player-name" id="player-name">name111</span>
+				<div class="bet">
+					<div class="racer-betting">
+						<button class="bet-btn add-racer" id="add-racer">+</button>
+						<span class="bet-racer">1</span>
+						<button class="bet-btn remove-racer" id="remove-racer">-</button>
+					</div>
+					<div class="money">
+						<button class="bet-btn" id="add-money">+</button>
+						<span class="bet-number">10</span>£
+						<button class="bet-btn" id="remove-money">-</button>
+					</div>
+					<button class="place-bet-btn" id="place-bet-btn">place bet</button>
+					<div class="bet-results">
+						<div class="multiplyer" id="multiplyer">x100£</div>
+						<div class="wins">1000</div>
+						<div class="bet-result">Lost</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</div>
+
+	<script src="src/index.ts"></script>
+</body>
+
+</html>

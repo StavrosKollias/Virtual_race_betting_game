@@ -1,0 +1,391 @@
+body {
+  margin: 0;
+}
+
+//--------mixings--------//
+.btn() {
+  width: 80px;
+  height: 30px;
+  color: @white;
+  font-weight: bold;
+  background-color: @green;
+  border: none;
+  margin: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.disabled {
+    background-color: @white;
+    color: @gray;
+
+    &:hover {
+      cursor: context-menu;
+    }
+  }
+}
+
+.display-flex-row-wrap() {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.display-flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.display-flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error {
+  color: @red;
+  word-wrap: break-word;
+  width: 30%;
+}
+//------Colors-----------//
+@light-gray: rgb(214, 207, 207);
+@brown: #a52a2a;
+@white: #f5f5f5;
+@black: #1c2022;
+@green: #5ac31e;
+@gray: gray;
+@red: red;
+
+.track {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  background-color: @brown;
+  border-top: 10px solid @light-gray;
+  border-bottom: 10px solid @light-gray;
+
+  .start-line {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    left: 45px;
+    background-color: @black;
+
+    &:after {
+      content: "Start";
+      font-size: 25px;
+      color: @white;
+      text-shadow: 1px 1px 1px fade(black, 60);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-40%) rotate(90deg) translateY(50px);
+    }
+  }
+
+  .finish-line {
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    right: 50px;
+    background-color: @black;
+
+    &:after {
+      content: "Finish";
+      font-size: 25px;
+      color: @white;
+      text-shadow: 1px 1px 1px fade(black, 60);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-40%) rotate(-270deg) translateY(10px);
+    }
+  }
+
+  .racers {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background-color: @white;
+    margin: 1%;
+    border-radius: 10px;
+    z-index: 1;
+    border: 1px solid black;
+    transform: translateZ(50%);
+
+    span {
+      position: absolute;
+      right: 50%;
+      bottom: 50%;
+      color: @white;
+      text-shadow: 2px 2px 1px @black;
+      transform: translate(50%, 50%);
+    }
+  }
+}
+
+.controls-results {
+  .display-flex-column();
+  align-items: center;
+  width: 100%;
+  height: auto;
+  background-color: @black;
+
+  .controls {
+    .display-flex-row();
+    width: 100%;
+    .start-btn {
+      .btn();
+    }
+  }
+
+  .results-odds {
+    .display-flex-row();
+    width: 100%;
+
+    .results {
+      .display-flex-column();
+      align-items: center;
+      justify-content: flex-start;
+      width: 50%;
+      border: 2px solid @white;
+
+      .resuts-title {
+        color: @white;
+        margin: 5px;
+        font-size: 20px;
+      }
+
+      span {
+        color: @white;
+        margin: 10px;
+        display: block;
+      }
+    }
+
+    .odds {
+      .display-flex-column();
+      align-items: center;
+      justify-content: flex-start;
+      width: 50%;
+      border: 2px solid @white;
+
+      .odds-title {
+        color: @white;
+        font-size: 20px;
+        margin: 5px;
+      }
+
+      .racers-odds-stats {
+        .display-flex-row();
+        width: 100%;
+
+        .racer-odds {
+          width: 50%;
+
+          h6 {
+            text-align: center;
+            color: @white;
+            font-size: 15px;
+          }
+          span {
+            color: @white;
+            margin: 10px;
+            display: block;
+            text-align: center;
+          }
+        }
+
+        .racer-stats {
+          width: 50%;
+
+          h6 {
+            text-align: center;
+            color: @white;
+            font-size: 15px;
+          }
+
+          span {
+            color: @white;
+            margin: 10px;
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+.betting-players {
+  width: 100%;
+  height: fit-content;
+  background-color: @green;
+
+  .betting-players_title {
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .control-betters {
+    padding: 10px;
+    .adjust-betters-btn {
+      .btn();
+      background-color: @black;
+    }
+
+    .better-name-input {
+      .btn();
+      width: unset;
+      background-color: unset;
+      outline: none;
+      font-size: 18px;
+
+      &:hover {
+        cursor: text;
+      }
+    }
+  }
+
+  .betting-players-list {
+    width: 99%;
+    margin: auto;
+    border: 1px solid @black;
+    height: fit-content;
+
+    .player {
+      .display-flex-row();
+      justify-content: space-between;
+      margin: 3px;
+      border: 1px solid @white;
+      padding: 20px;
+
+      .player-name {
+        position: relative;
+        width: 40%;
+
+        &:after {
+          content: "Name";
+          position: absolute;
+          top: -70%;
+          left: 0;
+          color: @white;
+        }
+      }
+
+      .bet {
+        width: 95%;
+        .display-flex-row();
+        justify-content: space-around;
+
+        .racer-betting {
+          margin: 0 5px;
+          position: relative;
+
+          .bet-btn {
+            .btn();
+            color: @white;
+            width: fit-content;
+            height: auto;
+            border: none;
+            background-color: @black;
+          }
+
+          &:after {
+            content: "Racer";
+            position: absolute;
+            top: -70%;
+            left: 50%;
+            color: @white;
+            transform: translateX(-50%);
+          }
+        }
+
+        .money {
+          margin: 0 5px;
+          position: relative;
+
+          .bet-btn {
+            .btn();
+            color: @white;
+            width: fit-content;
+            height: auto;
+            border: none;
+            background-color: @black;
+          }
+
+          &:after {
+            content: "Bet";
+            position: absolute;
+            top: -70%;
+            left: 42%;
+            color: @white;
+          }
+        }
+
+        .place-bet-btn {
+          .btn();
+          height: 26px;
+          color: @white;
+          border: none;
+          margin: 0;
+          background-color: @black;
+
+          &.disabled {
+            background-color: @white;
+            color: @black;
+
+            &:hover {
+              cursor: context-menu;
+            }
+          }
+        }
+
+        .bet-results {
+          width: 40%;
+          display: flex;
+          justify-content: flex-end;
+
+          div {
+            width: 30%;
+            text-align: center;
+            position: relative;
+
+            &:after {
+              content: "Wins";
+              position: absolute;
+              top: -70%;
+              left: 50%;
+              color: @white;
+              transform: translateX(-50%);
+            }
+          }
+
+          div:first-of-type {
+            &:after {
+              content: "Multiplyer";
+              position: absolute;
+              top: -70%;
+              left: 50%;
+              color: @white;
+              transform: translateX(-50%);
+            }
+          }
+
+          div:last-of-type {
+            &:after {
+              content: "Result";
+              position: absolute;
+              top: -70%;
+              left: 50%;
+              color: @white;
+              transform: translateX(-50%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
