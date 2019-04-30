@@ -424,8 +424,8 @@ $(function() {
     const result = element.nextElementSibling.children[2];
 
     place_Bet(bet_racer, bet_number, wins, better_name, multiplyer, result);
-    element.setAttribute("disabled", "true");
-    element.classList.add("disabled");
+    //element.setAttribute("disabled", "true");
+    //element.classList.add("disabled");
   }
 
   function place_Bet(
