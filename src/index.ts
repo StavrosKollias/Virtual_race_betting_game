@@ -9,15 +9,20 @@ $(function() {
     "green",
     "white",
     "#808000",
-    "#808000",
-    "#6AC37D",
+    "#D98880",
+    "#9B59B6",
     "#6AC3BB"
   ];
 
   var racer_odds_array = [
     { racer: 1, odd: 3.5, wins: 0, races: 0 },
     { racer: 2, odd: 10.5, wins: 0, races: 0 },
-    { racer: 3, odd: 45.5, wins: 0, races: 0 }
+    { racer: 3, odd: 35.35, wins: 0, races: 0 },
+    { racer: 4, odd: 14.5, wins: 0, races: 0 },
+    { racer: 5, odd: 28.7, wins: 0, races: 0 },
+    { racer: 6, odd: 25.5, wins: 0, races: 0 },
+    { racer: 7, odd: 23.5, wins: 0, races: 0 }
+    { racer: 8, odd: 6.5, wins: 0, races: 0 }
   ];
 
   //-----------variables------------------//
@@ -237,33 +242,41 @@ $(function() {
   }
 
   function enable_disable_Bet_Btns(enable: boolean) {
-    const place_btns = document.querySelectorAll(".place-bet-btn");
-    const bet_btn = document.querySelectorAll(".bet-btn");
+    //const place_btns = document.querySelectorAll(".place-bet-btn");
+    const place_btns = $(".place-bet-btn");
+    const bet_btn = $(".bet-btn");
     if (enable) {
+      //const bet_btn = document.querySelectorAll(".bet-btn");
+      const bet_btn = $(".bet-btn");
+      add_better.removeClass("disabled");
       add_better.prop("disabled", false);
-      //add_better.remove("disabled");
+
+      remove_better.removeClass("disabled");
       remove_better.prop("disabled", false);
-      //remove_better.remove("disabled");
-      bet_btn.forEach(function(e) {
+      bet_btn.each(function(e) {
         $(this).prop("disabled", false);
-        e.classList.remove("disabled");
+        $(this).removeClass("disabled");
       });
-      place_btns.forEach(function(e) {
+
+      place_btns.each(function(e) {
         $(this).prop("disabled", false);
-        e.classList.remove("disabled");
+        $(this).removeClass("disabled");
       });
     } else {
+      add_better.addClass("disabled");
       add_better.prop("disabled", true);
-      //add_better.remove("disabled");
+
+      remove_better.addClass("disabled");
       remove_better.prop("disabled", true);
-      //remove_better.remove("disabled");
-      bet_btn.forEach(function(e) {
+
+      bet_btn.each(function(e) {
         $(this).prop("disabled", true);
-        e.classList.add("disabled");
+        $(this).addClass("disabled");
       });
-      place_btns.forEach(function(e) {
+
+      place_btns.each(function(e) {
         $(this).prop("disabled", true);
-        e.classList.add("disabled");
+        $(this).addClass("disabled");
       });
     }
   }
@@ -462,10 +475,11 @@ $(function() {
     const money_number = Number(money.innerHTML);
     const multiplyer_number = Number(multiplyer.innerHTML);
     const winnings = money_number * multiplyer_number;
+    const winningString= winnings.toFixed(2);
     //-- ----set Results--------///
     result.innerHTML = "Unsettled";
     const result_Txt = result.innerHTML;
-    wins.innerHTML = String(winnings);
+    wins.innerHTML = winningString;
 
     player_bets.push({
       betterName: better_name_Txt,
@@ -489,14 +503,16 @@ $(function() {
   }
 
   function display_settled_bets(player_bets) {
-    const displayed_bets = document.querySelectorAll(".bet-result");
-    displayed_bets.forEach(function(e) {
+    const displayed_bets = $(".bet-result");
+    displayed_bets.map(function(i, e) {
       const name =
         e.parentElement.parentElement.previousElementSibling.innerHTML;
       const existed_bet = player_bets.filter(o => {
         return o.betterName == name;
       });
-      e.innerHTML = existed_bet[0].result;
+      if (existed_bet.length > 0) {
+        e.innerHTML = existed_bet[0].result;
+      }
     });
   }
 

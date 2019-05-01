@@ -231,9 +231,19 @@ body {
 
   .control-betters {
     padding: 10px;
+
     .adjust-betters-btn {
       .btn();
       background-color: @black;
+
+      &.disabled {
+        background-color: @white;
+        color: @black;
+
+        &:hover {
+          cursor: context-menu;
+        }
+      }
     }
 
     .better-name-input {
