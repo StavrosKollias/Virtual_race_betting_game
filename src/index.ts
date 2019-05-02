@@ -432,7 +432,7 @@ $(function() {
     }
   }
 
-  function add_Remove_Money(element: HTMLButtonElement, flag: boolean) {
+  function add_Remove_Money(element: any, flag: boolean) {
     var newtext: number;
     const span = element.parentElement.children[1];
     const spanTxt = parseInt(span.innerHTML);
@@ -449,7 +449,7 @@ $(function() {
     }
   }
 
-  function get_Bet_values(element: HTMLButtonElement) {
+  function get_Bet_values(element:any) {
     const bet_number = element.previousElementSibling.children[1];
     const better_name = element.parentElement.previousElementSibling;
     const bet_racer =
